@@ -1,1 +1,31 @@
 @import "tailwindcss";
+
+:root {
+  /* base */
+  --paper: #fbf6ee;
+  --surface: #ffffff;
+  --surface-2: #f6efe6;
+  --line: #efe3d6;
+  --line-strong: #dcc9b6;
+  --ink: #1e1b16;
+  --ink-soft: #6b5a4a;
+  --muted: #9c8c7a;
+
+  /* clay (brand) */
+  --clay: #bc4a2a;
+  --clay-700: #9b3a1f;
+  --clay-soft: #f1c9bc;
+  --clay-tint: #fceeea;
+
+  /* green (success) */
+  --green: #2e6b4e;
+  --green-soft: #e2efe7;
+
+  /* gold (accent) */
+  --gold: #be8e2c;
+  --gold-soft: #f6ecd3;
+
+  /* indigo (accent) */
+  --indigo: #3a6276;
+  --indigo-soft: #e6eef2;
+}
