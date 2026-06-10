@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { User, Building2, CreditCard, Mail, Lock, Quote, Eye, EyeOff, Check } from "lucide-react";
-import { USER, NEWSROOM, initials } from "../data.js";
+import { USER, NEWSROOM, PLANS, initials } from "../data.js";
 import TextField from "../components/TextField.jsx";
 import ColorField from "../components/ColorField.jsx";
 import ImageUpload from "../components/ImageUpload.jsx";
@@ -15,12 +15,6 @@ const TABS = [
 const PANEL = "bg-[var(--surface)] border border-[var(--line)] rounded-2xl p-6 animate-fade-up";
 const TITLE = "font-news text-[18px] font-semibold tracking-tight";
 const SUB = "text-[13px] text-[var(--muted)] mt-0.5 mb-5";
-
-const PLANS = [
-  { id: "starter", name: "Starter", price: "$19", features: ["20 stories / month", "2 languages", "Audio only"] },
-  { id: "growth", name: "Growth", price: "$49", features: ["Unlimited stories", "5 languages", "Audio + video", "Priority support"] },
-  { id: "studio", name: "Studio", price: "$99", features: ["Everything in Growth", "Custom voices", "Team seats", "Dedicated support"] },
-];
 
 function ProfileTab() {
   const [profile, setProfile] = useState({ name: USER.name, email: USER.email, role: USER.role, avatar: USER.avatar });
@@ -150,7 +144,7 @@ export default function Settings() {
   const [tab, setTab] = useState("profile");
 
   return (
-    <div className="p-4 md:p-6 max-w-2xl animate-fade-up">
+    <div className="p-4 md:p-6 animate-fade-up">
       <div className="flex gap-1.5 bg-[var(--surface-2)] border border-[var(--line)] rounded-[12px] p-1.5 mb-5 w-full sm:w-fit">
         {TABS.map((t) => {
           const Icon = t.icon;

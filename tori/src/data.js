@@ -18,6 +18,12 @@ export const NEWSROOM = {
 export const initials = (name) =>
   name.split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
 
+export const PLANS = [
+  { id: "starter", name: "Starter", price: "$19", features: ["20 stories / month", "2 languages", "Audio only"] },
+  { id: "growth", name: "Growth", price: "$49", features: ["Unlimited stories", "5 languages", "Audio + video", "Priority support"] },
+  { id: "studio", name: "Studio", price: "$99", features: ["Everything in Growth", "Custom voices", "Team seats", "Dedicated support"] },
+];
+
 export const LANGS = [
   { id:"en", name:"English", abbr:"EN", color:"#1E1B16",
     voices:[ {n:"Amara", d:"Warm · Female"}, {n:"David", d:"Authoritative · Male"} ] },

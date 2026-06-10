@@ -7,7 +7,7 @@ const BULLETS = [
   "Publish straight to WhatsApp, TikTok and your site",
 ];
 
-export default function AuthLayout({ heading, sub, children }) {
+export default function AuthLayout({ heading, sub, wide, children }) {
   return (
     <div className="min-h-screen flex bg-[var(--paper)] text-[var(--ink)]">
       {/* brand panel */}
@@ -68,7 +68,7 @@ export default function AuthLayout({ heading, sub, children }) {
         </div>
 
         <div className="flex-1 grid place-items-center px-5 pb-12">
-          <div className="w-full max-w-[400px]">
+          <div className={"w-full " + (wide ? "max-w-[480px]" : "max-w-[400px]")}>
             <h1 className="font-news text-[28px] font-semibold tracking-tight">{heading}</h1>
             <p className="text-[var(--ink-soft)] text-sm mt-1.5 mb-7">{sub}</p>
             {children}

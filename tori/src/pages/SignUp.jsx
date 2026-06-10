@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { User, Mail, Lock, Building2, Eye, EyeOff, Quote, ChevronLeft } from "lucide-react";
+import { User, Mail, Lock, Building2, Eye, EyeOff, Quote, ChevronLeft, Check } from "lucide-react";
 import AuthLayout from "../components/AuthLayout.jsx";
 import TextField from "../components/TextField.jsx";
 import Stepper from "../components/Stepper.jsx";
 import ColorField from "../components/ColorField.jsx";
 import ImageUpload from "../components/ImageUpload.jsx";
+import { PLANS } from "../data.js";
 
-const STEPS = ["Your account", "Your newsroom"];
+const STEPS = ["Your account", "Your newsroom", "Your plan"];
 
 const HEADINGS = [
   { heading: "Create your account", sub: "Start free — your first multilingual story is minutes away." },
   { heading: "Set up your newsroom", sub: "We'll use this to brand your dashboard with your name, logo and colours." },
+  { heading: "Choose your plan", sub: "Start on any plan — you can change it any time from settings." },
 ];
 
 export default function SignUp() {
@@ -27,6 +29,7 @@ export default function SignUp() {
     primaryColor: "#BC4A2A",
     secondaryColor: "#2E6B4E",
   });
+  const [plan, setPlan] = useState("growth");
 
   const submitAccount = (e) => {
     e.preventDefault();
@@ -34,8 +37,13 @@ export default function SignUp() {
     setStep(1);
   };
 
-  // Mock sign-up — replace with a real request, then navigate into the product.
   const submitNewsroom = (e) => {
+    e.preventDefault();
+    setStep(2);
+  };
+
+  // Mock sign-up — replace with a real request, then navigate into the product.
+  const submitPlan = (e) => {
     e.preventDefault();
     navigate("/app");
   };
@@ -43,8 +51,8 @@ export default function SignUp() {
   const { heading, sub } = HEADINGS[step];
 
   return (
-    <AuthLayout heading={heading} sub={sub}>
-      <Stepper steps={STEPS} current={step} done={[step > 0, false]} onJump={(i) => { if (i <= step) setStep(i); }} />
+    <AuthLayout heading={heading} sub={sub} wide>
+      <Stepper steps={STEPS} current={step} done={[step > 0, step > 1, false]} onJump={(i) => { if (i <= step) setStep(i); }} />
 
       {step === 0 ? (
         <form onSubmit={submitAccount}>
@@ -103,7 +111,7 @@ export default function SignUp() {
             Continue
           </button>
         </form>
-      ) : (
+      ) : step === 1 ? (
         <form onSubmit={submitNewsroom}>
           <TextField
             label="Newsroom name"
@@ -135,6 +143,55 @@ export default function SignUp() {
             <button
               type="button"
               onClick={() => setStep(0)}
+              className="px-5 py-3 rounded-xl border border-[var(--line-strong)] text-sm font-semibold text-[var(--ink)] hover:bg-[var(--surface-2)] transition flex items-center gap-1.5"
+            >
+              <ChevronLeft size={16} /> Back
+            </button>
+            <button type="submit" className="flex-1 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold text-sm shadow-[0_2px_0_var(--clay-700)] hover:bg-[var(--clay-700)] hover:-translate-y-px transition">
+              Continue
+            </button>
+          </div>
+        </form>
+      ) : (
+        <form onSubmit={submitPlan}>
+          {PLANS.map((p) => {
+            const selected = plan === p.id;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPlan(p.id)}
+                className={
+                  "w-full text-left flex items-start gap-3 p-3.5 rounded-[13px] border transition mb-2.5 " +
+                  (selected ? "border-[var(--clay)] bg-[var(--clay-tint)]" : "border-[var(--line)] bg-[var(--surface)] hover:border-[var(--line-strong)]")
+                }
+                style={{ borderWidth: 1.5 }}
+              >
+                <span className="flex-1 min-w-0">
+                  <span className="flex items-baseline gap-2 flex-wrap">
+                    <span className="font-news font-semibold text-[15px]">{p.name}</span>
+                    <span className="text-[13px] text-[var(--muted)]">{p.price}/mo</span>
+                    {p.id === "growth" && (
+                      <span className="text-[10.5px] font-semibold px-2 py-0.5 rounded-full bg-[var(--green-soft)] text-[var(--green)]">Recommended</span>
+                    )}
+                  </span>
+                  <span className="block text-[12px] text-[var(--ink-soft)] mt-1">{p.features.join(" · ")}</span>
+                </span>
+                <span className={"mt-0.5 w-5 h-5 shrink-0 rounded-full grid place-items-center border " + (selected ? "bg-[var(--clay)] border-[var(--clay)] text-white" : "bg-[var(--surface)] border-[var(--line-strong)]")}>
+                  {selected && <Check size={12} />}
+                </span>
+              </button>
+            );
+          })}
+
+          <p className="text-[12.5px] text-[var(--muted)] mb-5 mt-1">
+            You won't be charged today — change or cancel your plan any time from settings.
+          </p>
+
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setStep(1)}
               className="px-5 py-3 rounded-xl border border-[var(--line-strong)] text-sm font-semibold text-[var(--ink)] hover:bg-[var(--surface-2)] transition flex items-center gap-1.5"
             >
               <ChevronLeft size={16} /> Back
