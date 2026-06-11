@@ -16,7 +16,7 @@ export default function ImageUpload({ label = "Logo", image, onChange, shape = "
         <span className="flex items-center gap-1.5 text-sm font-semibold text-[var(--clay-700)]">
           <Upload size={15} /> {image ? "Change" : "Upload"}
         </span>
-        <span className="ml-auto text-[12px] text-[var(--muted)]">{hint}</span>
+        <span className="ml-auto text-[12px] text-[var(--muted)] hidden sm:inline shrink-0">{hint}</span>
       </span>
       <input
         type="file"

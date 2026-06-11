@@ -82,19 +82,19 @@ export default function Contact() {
               </div>
               <TextField label="Organisation" placeholder="Your newsroom or outlet" value={form.org} onChange={set("org")} />
               <label className="block mb-4">
-                <span className="block text-[12.5px] font-semibold text-(--ink-soft)] mb-1.5">Topic</span>
-                <select value={form.topic} onChange={set("topic")} className="w-full bg-(--surface-2)] border border-(--line)] rounded-xl px-3.5 py-2.5 text-sm transition focus:outline-none focus:border-(--clay)] focus:bg-white focus:ring-2 focus:ring-(--clay-soft)]">
+                <span className="block text-[12.5px] font-semibold text-[var(--ink-soft)] mb-1.5">Topic</span>
+                <select value={form.topic} onChange={set("topic")} className="w-full bg-[var(--surface-2)] border border-[var(--line)] rounded-xl px-3.5 py-2.5 text-sm transition focus:outline-none focus:border-[var(--clay)] focus:bg-white focus:ring-2 focus:ring-[var(--clay-soft)]">
                   {["General enquiry", "Sales & pricing", "Technical support", "Press", "Partnership"].map((o) => <option key={o}>{o}</option>)}
                 </select>
               </label>
               <label className="block mb-5">
-                <span className="block text-[12.5px] font-semibold text-(--ink-soft)] mb-1.5">Message</span>
-                <textarea required rows={5} placeholder="Tell us a bit about your newsroom and what you need…" value={form.message} onChange={set("message")} className="w-full bg-(--surface-2)] border border-(--line)] rounded-xl px-3.5 py-3 text-sm leading-relaxed resize-y transition focus:outline-none focus:border-(--clay)] focus:bg-white focus:ring-2 focus:ring-(--clay-soft)]" />
+                <span className="block text-[12.5px] font-semibold text-[var(--ink-soft)] mb-1.5">Message</span>
+                <textarea required rows={5} placeholder="Tell us a bit about your newsroom and what you need…" value={form.message} onChange={set("message")} className="w-full bg-[var(--surface-2)] border border-[var(--line)] rounded-xl px-3.5 py-3 text-sm leading-relaxed resize-y transition focus:outline-none focus:border-[var(--clay)] focus:bg-white focus:ring-2 focus:ring-[var(--clay-soft)]" />
               </label>
-              <button type="submit" className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold text-sm shadow-[0_2px_0(--clay-700)] hover:bg-(--clay-700)] hover:-translate-y-px transition">
+              <button type="submit" className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold text-sm shadow-[0_2px_0_var(--clay-700)] hover:bg-[var(--clay-700)] hover:-translate-y-px transition">
                 <Send size={16} /> Send message
               </button>
-              <p className="text-[12px] text-(--muted)] text-center mt-3">We'll only use your details to respond to this enquiry.</p>
+              <p className="text-[12px] text-[var(--muted)] text-center mt-3">We'll only use your details to respond to this enquiry.</p>
             </form>
           )}
         </div>
