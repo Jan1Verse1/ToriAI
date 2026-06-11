@@ -180,13 +180,13 @@ export default function Create() {
   return (
     <div className="p-4 md:p-6">
       {demoFlag === undefined && step === 0 && (
-        <div className="flex items-center gap-2.5 px-4 py-3.5 rounded-[13px] mb-[18px] text-white animate-fade-up" style={{ background: "linear-gradient(100deg,var(--clay),var(--clay-700))" }}>
-          <Zap size={18} className="animate-pulse" />
-          <div>
+        <div className="flex items-center flex-wrap gap-2.5 px-4 py-3.5 rounded-[13px] mb-[18px] text-white animate-fade-up" style={{ background: "linear-gradient(100deg,var(--clay),var(--clay-700))" }}>
+          <Zap size={18} className="animate-pulse shrink-0" />
+          <div className="min-w-0">
             <div className="text-[13.5px] font-semibold">Tip: try the one-click demo</div>
             <div className="text-[11.5px] opacity-90">Paste a story or load the sample to see the full flow.</div>
           </div>
-          <button onClick={() => { setTab("text"); setText(SAMPLE.text); }} className="ml-auto bg-white/20 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">Load sample story</button>
+          <button onClick={() => { setTab("text"); setText(SAMPLE.text); }} className="ml-auto shrink-0 bg-white/20 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">Load sample story</button>
         </div>
       )}
 
